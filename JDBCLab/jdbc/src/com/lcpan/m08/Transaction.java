@@ -5,8 +5,8 @@ import java.sql.*;
 public class Transaction {
 	private static final String DB_URL = 
 			"jdbc:mysql://localhost:3306/jdbc?serverTimezone=UTC";
-	private static final String USER = "sa";
-	private static final String PASSWORD = "passw0rd";
+	private static final String USER = "root";
+	private static final String PASSWORD = "Passw0rd!";
 	
 	private static final String SQL =
 			"INSERT INTO department VALUES (?, ?)";
@@ -31,9 +31,9 @@ public class Transaction {
 			conn.commit();
 
 			pstmt.setInt(1, 404);
-			pstmt.setString(2, "Sales1");
+			pstmt.setString(2, "Sales2");
 			pstmt.executeUpdate();
-			pstmt.setInt(1, 405);
+			pstmt.setInt(1, 402); // 故意設置錯誤點
 			pstmt.setString(2, "Service2");
 			pstmt.executeUpdate();
 			pstmt.setInt(1, 406);
@@ -41,6 +41,17 @@ public class Transaction {
 			pstmt.executeUpdate();
 			conn.commit();
 
+			pstmt.setInt(1, 407);
+			pstmt.setString(2, "Sales3");
+			pstmt.executeUpdate();
+			pstmt.setInt(1, 408);
+			pstmt.setString(2, "Service3");
+			pstmt.executeUpdate();
+			pstmt.setInt(1, 409);
+			pstmt.setString(2, "Production3");
+			pstmt.executeUpdate();
+			conn.commit();
+			
 			conn.setAutoCommit(true);
 
 			pstmt.close();

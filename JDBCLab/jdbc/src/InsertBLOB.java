@@ -1,4 +1,4 @@
-import java.io.FileInputStream;
+import java.io.*;
 import java.sql.*;
 
 public class InsertBLOB {
@@ -18,7 +18,7 @@ public class InsertBLOB {
 			
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			
-			String inFile = "";
+			String inFile = "res/Tomcat.gif";
 			
 			FileInputStream fis = new FileInputStream(inFile);
 			
@@ -36,6 +36,8 @@ public class InsertBLOB {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			if (conn != null) {
